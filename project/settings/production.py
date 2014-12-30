@@ -16,7 +16,7 @@ EMAIL_HOST = 'localhost'
 EMAIL_PORT = '25'
 DEFAULT_FROM_EMAIL = "noreply@gmail.com"
 ADMINS = (
-    ('Florentin Sardan', 'elmophp@gmail.com'),
+    ('admin', 'ibyon@yahoo.com'),
 )
 MANAGERS = ADMINS
 INTERNAL_IPS = ('127.0.0.1',)

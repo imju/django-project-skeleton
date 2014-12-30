@@ -23,3 +23,37 @@ DEBUG_TOOLBAR_CONFIG = {
 TEMPLATE_CONTEXT_PROCESSORS += [
     'django.core.context_processors.debug'
 ]
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'formatters': {
+        'verbose': {
+            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt' : "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },    
+    'handlers': {
+        'file_logging': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.WatchedFileHandler',
+            'filename': os.path.join(PARENT_ROOT, 'logs/errors.log'),
+        },
+    },
+    'loggers': {
+        'django.db': {
+            'level': 'DEBUG',
+            'handlers': ['file_logging'],
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['file_logging'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    }
+}
+

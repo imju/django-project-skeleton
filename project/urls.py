@@ -1,6 +1,7 @@
-from django.conf.urls.defaults import patterns, include, url
+#from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls import patterns, url, include
 from django.conf import settings
-from django.views.generic.simple import direct_to_template
+from django.views.generic import TemplateView
 
 urlpatterns = patterns("")
 
@@ -10,13 +11,10 @@ admin.autodiscover()
 
 # Custom urls
 urlpatterns += patterns("",
-    url(r"^$", direct_to_template, 
-        {"template": "pages/home.html"}, name="home"),
-    url(r'^robots\.txt$', direct_to_template, 
-        {'template': 'pages/robots.txt', 'mimetype': 'text/plain'}, name="robots"),
-    url(r'^google.html$', direct_to_template, 
-        {'template': 'pages/google.html'}, name="google"),
-    url(r"^admin/", include(admin.site.urls)),
+    url(r'^', TemplateView.as_view(template_name="pages/home.html"), name="home"),
+    url(r'^robots\.txt$', TemplateView.as_view(template_name="pages/robots.txt"), name="robots"),
+    url(r'^google.html$', TemplateView.as_view(template_name="pages/google.html"), name="google"),
+    url(r'^admin/', include(admin.site.urls)),
 )
 
 # Staticfiles urls

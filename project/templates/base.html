@@ -37,13 +37,13 @@ xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
 <div id="header" class="yui3-g mt">
 	<div class="yui3-u-1 box_header" >
 	{% block logo %}
-		<a href="{% url home %}"><img src="http://media.djangoproject.com/img/badges/djangojoint107x25.gif" alt="Logo" /></a>
+		<a href="{% url 'home' %}"><img src="http://media.djangoproject.com/img/badges/djangojoint107x25.gif" alt="Logo" /></a>
 	{% endblock %}
 	</div>
 </div>
 <div id="nav" class="yui3-g mt">
 	<div class="yui3-u-1 box_nav">
-		<a href="{% url home %}">Home</a> 
+		<a href="{% url 'home' %}">Home</a> 
 	</div>
 </div>
 {% endblock %}
@@ -59,7 +59,7 @@ xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
 {% block footer_base %}
 <div id="footer" class="yui3-g mt">
 	<div class="yui3-u-1 box_footer">
-		{% block footer %}Copyright &copy;2012{% endblock footer %}
+		{% block footer %}Copyright &copy;2014{% endblock footer %}
 	</div>
 </div>
 {% endblock %}
