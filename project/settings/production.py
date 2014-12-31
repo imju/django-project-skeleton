@@ -16,7 +16,7 @@ EMAIL_HOST = 'localhost'
 EMAIL_PORT = '25'
 DEFAULT_FROM_EMAIL = "noreply@gmail.com"
 ADMINS = (
-    ('admin', 'ibyon@yahoo.com'),
+    ('admin', 'admin@admin.com'),
 )
 MANAGERS = ADMINS
 INTERNAL_IPS = ('127.0.0.1',)
@@ -69,11 +69,16 @@ INSTALLED_APPS += (
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
-    'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler'
+    'formatters': {
+        'verbose': {
+            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt' : "%d/%b/%Y %H:%M:%S"
         },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },    
+    'handlers': {
         'file_logging': {
             'level': 'DEBUG',
             'class': 'logging.handlers.WatchedFileHandler',
@@ -83,11 +88,11 @@ LOGGING = {
     'loggers': {
         'django.db': {
             'level': 'ERROR',
-            'handlers': ['mail_admins', 'file_logging'],
+            'handlers': ['file_logging'],
             'propagate': True,
         },
         'django.request': {
-            'handlers': ['mail_admins', 'file_logging'],
+            'handlers': ['file_logging'],
             'level': 'ERROR',
             'propagate': True,
         },
